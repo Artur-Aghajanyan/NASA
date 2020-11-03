@@ -1,0 +1,9 @@
+{
+  "title": "NASA BROWSER",
+  "header-list": {
+    "home": "HOME",
+    "nearby-asteroids": "NEARBY ASTEROIDS",
+    "astronmy-picture-of-the-day": "ASTRONOMY PICTURE OF THE DAY",
+    "submit-new-planet": "SUBMIT NEW PLANET"
+  }
+}

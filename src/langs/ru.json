@@ -1,0 +1,9 @@
+{
+  "title": "NASA БРАУЗЕР",
+  "header-list": {
+    "home": "ГЛАВНАЯ",
+    "nearby-asteroids": "БЛИЖАЙШИЕ АСТЕРОИДЫ",
+    "astronmy-picture-of-the-day": "АСТРОНОМИЧЕСКАЯ КАРТИНКА ДНЯ",
+    "submit-new-planet": "ДОБАВИТЬ НОВУЮ ПЛАНЕТУ"
+  }
+}

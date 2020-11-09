@@ -1,29 +1,118 @@
 <template>
   <div>
     <p>If you found new planet you can add it to our directory (Reactive forms demo)</p>
-    <input class="form-control" type="text" placeholder="Planet Name">
-    <div>
-      <select id="inputState" class="form-control">
-        <option selected>Galaxy name</option>
-        <option>Milky Way</option>
-        <option>Messier 83</option>
-        <option>Black Eye Galaxy</option>
-        <option>Pinwheel</option>
-        <option>Canis Major Dawrf</option>
-        <option>Somewhere else...</option>
-      </select>
+    <div v-if="show" class="alert alert-success">
+      Good job, form has been successfully submitted!
     </div>
-    <input _ngcontent-frd-11="" class="form-control ng-dirty ng-touched ng-invalid" formcontrolname="diameter" placeholder="Diameter (km)" type="number" ng-reflect-name="diameter">
-    <input _ngcontent-frd-11="" class="form-control ng-dirty ng-touched ng-invalid" formcontrolname="diameter" placeholder="Diameter (km)" type="number" ng-reflect-name="diameter">
-    <input class="form-control" type="text" placeholder="Your name">
-    <input class="form-control" type="text" placeholder="Your email">
-    <button type="button" class="btn">Submit</button>
+    <input class="form-control" type="text" placeholder="Planet Name" v-model.trim="$v.planetName.$model" :class="{
+             'is-invalid': $v.planetName.$error,
+           }">
+    <div class="invalid-feedback" >
+      <span v-if="!$v.planetName.required">Required</span>
+      <span v-if="!$v.planetName.minLength">Min length is {{$v.planetName.$params.minLength.min}} symbols</span>
+    </div>
+    <div>
+      <select id="inputState" class="form-control" v-model.trim="$v.galaxyName.$model" :class="{
+             'is-invalid': $v.galaxyName.$error,
+           }">
+        <option value="" disabled="disabled" style="background: lightgray">Galaxy name</option>
+        <option value="Milky Way">Milky Way</option>
+        <option value="Messier 83">Messier 83</option>
+        <option value="Black Eye Galaxy">Black Eye Galaxy</option>
+        <option value="Pinwheel">Pinwheel</option>
+        <option value="Canis Major Dawrf">Canis Major Dawrf</option>
+        <option value="Somewhere else...">Somewhere else...</option>
+      </select>
+      <div class="invalid-feedback" >
+        <span v-if="!$v.galaxyName.required">Required</span>
+      </div>
+    </div>
+    <input
+           class="form-control ng-dirty ng-touched ng-invalid"
+           placeholder="Diameter (km)"
+           type="number"
+           v-model.trim="$v.diameterKM.$model" :class="{
+             'is-invalid': $v.diameterKM.$error,
+           }"
+           >
+    <div class="invalid-feedback" >
+      <span v-if="!$v.diameterKM.required">Required</span>
+    </div>
+    <input class="form-control ng-dirty ng-touched ng-invalid"
+           placeholder="Diameter (mln km)" type="number"
+           v-model.trim="$v.diameterMLNKM.$model" :class="{
+             'is-invalid': $v.diameterMLNKM.$error,
+           }">
+    <div class="invalid-feedback" >
+      <span v-if="!$v.diameterMLNKM.required">Required</span>
+    </div>
+    <input class="form-control" type="text" placeholder="Your name"
+           v-model.trim="$v.name.$model" :class="{
+             'is-invalid': $v.name.$error,
+           }">
+    <div class="invalid-feedback" >
+      <span v-if="!$v.name.required">Required</span>
+    </div>
+    <input class="form-control" type="text" placeholder="Your email"
+           v-model.trim="$v.email.$model" :class="{
+             'is-invalid': $v.email.$error,
+           }">
+    <div class="invalid-feedback" >
+      <span v-if="!$v.email.required">Required</span>
+      <span v-if="!$v.email.email">Email is not valid</span>
+    </div>
+    <button type="button" class="btn" @click="sendData">Submit</button>
   </div>
 </template>
 
 <script>
+import {minLength, required, email} from "vuelidate/lib/validators";
+
 export default {
-  name: "SubmitNewPlanet"
+  name: "SubmitNewPlanet",
+  data(){
+    return{
+      planetName: '',
+      galaxyName: '',
+      diameterKM: '',
+      diameterMLNKM: '',
+      name: '',
+      email: '',
+      show: false,
+    }
+  },
+  validations:{
+    planetName:{
+      required,
+      minLength: minLength(16),
+    },
+    galaxyName:{
+      required,
+    },
+    diameterKM:{
+      required,
+    },
+    diameterMLNKM:{
+      required,
+    },
+    name:{
+      required,
+    },
+    email:{
+      required,
+      email
+    }
+  },
+  methods:{
+    sendData(){
+      if(this.$v.$invalid){
+        this.$v.$touch();
+        this.show = false
+        return ;
+      }
+      this.show = true
+    }
+  }
 }
 </script>
 

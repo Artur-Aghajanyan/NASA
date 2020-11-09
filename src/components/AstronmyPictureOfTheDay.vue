@@ -4,28 +4,30 @@
       <p>Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.</p>
     </div>
     <div class="datepicker">
-      <date-picker
+      <Datepicker
           v-model="time1"
           valueType="format"
           :aria-placeholder="time1"
-      >{{time1}}</date-picker>
+          :disabledDates="disabledDates">
+      >{{time1}}</Datepicker>
       <button type="button" class="btn btn-outline-dark">Go</button>
     </div>
   </div>
 </template>
 
 <script>
-import DatePicker from 'vue2-datepicker';
-import 'vue2-datepicker/index.css';
-
+import Datepicker from 'vuejs-datepicker';
 export default {
   components: {
-    DatePicker
+    Datepicker
   },
   name: "AstronmyPictureOfTheDay",
   data(){
     return {
-      time1:  new Date().toLocaleString(),
+      time1:  new Date(),
+      disabledDates: {
+        to: new Date(Date.now())
+      }
     };
   }
 }
@@ -35,6 +37,7 @@ export default {
 .datepicker{
   display: flex;
   justify-content: space-evenly;
+  align-items: baseline;
 }
 .AstronmyPictureOfTheDay{
   width: 50%;
@@ -48,5 +51,12 @@ export default {
     width: 100%;
     margin-bottom: 30px;
   }
+}
+.vdp-datepicker {
+  text-align: center;
+}
+#app > div.AstronmyPictureOfTheDay > div.datepicker > button{
+  width: 45%;
+  margin: auto;
 }
 </style>

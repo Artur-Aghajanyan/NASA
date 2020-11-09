@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0e5fb4"],{9799:function(e){e.exports=JSON.parse('{"title":"NASA БРАУЗЕР","header-list":{"home":"ГЛАВНАЯ","nearby-asteroids":"БЛИЖАЙШИЕ АСТЕРОИДЫ","astronmy-picture-of-the-day":"АСТРОНОМИЧЕСКАЯ КАРТИНКА ДНЯ","submit-new-planet":"ДОБАВИТЬ НОВУЮ ПЛАНЕТУ"}}')}}]);
+//# sourceMappingURL=chunk-2d0e5fb4.7ea8301b.js.map

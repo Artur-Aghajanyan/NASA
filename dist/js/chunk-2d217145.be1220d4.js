@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d217145"],{c4ca:function(e){e.exports=JSON.parse('{"title":"NASA ԲՐԱՈՒԶԵՐ","header-list":{"home":"ԳԼԽԱՎՈՐ","nearby-asteroids":"ՄՈՏԱԿԱ ԱՍՏԵՐՈԻԴՆԵՐԸ","astronmy-picture-of-the-day":"ԱՍՏՂԱԳԻՏՈՒԹՅՈՒՆ - ՕՐՎԱ ՆԿԱՐ","submit-new-planet":"ԱՎԵԼԱՑՆԵԼ ՆՈՐ ՄՈԼՈՐԱԿ"}}')}}]);
+//# sourceMappingURL=chunk-2d217145.be1220d4.js.map
